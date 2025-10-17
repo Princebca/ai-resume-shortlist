@@ -1,0 +1,11 @@
+flask
+flask-cors
+sqlalchemy
+python-multipart
+python-docx
+pdfplumber
+sentence-transformers
+transformers
+torch
+uvicorn
+gunicorn
