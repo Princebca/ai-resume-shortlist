@@ -3,6 +3,103 @@
 <head>
 <meta charset="utf-8" />
 <title>Resume Shortlist - Demo</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: #f8f9fb;
+        margin: 0;
+        padding: 0;
+    }
+    h2, h3 {
+        color: #253858;
+    }
+    #uploadForm,
+    #matchBtn,
+    textarea,
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="file"] {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 400px;
+    }
+    form {
+        background: #fff;
+        padding: 24px 32px;
+        margin: 32px auto;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        max-width: 470px;
+    }
+    textarea {
+        resize: vertical;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 6px;
+        border: 1px solid #ccd6dd;
+        box-sizing: border-box;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+        padding: 8px;
+        font-size: 15px;
+        border-radius: 6px;
+        border: 1px solid #b6c2cf;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+    }
+    input[type="file"] {
+        border: 1px solid #b6c2cf;
+        border-radius: 6px;
+        background: #f4f5f7;
+        padding: 8px;
+        margin-bottom: 16px;
+    }
+    button {
+        background: #0065ff;
+        color: #fff;
+        padding: 10px 22px;
+        border: none;
+        border-radius: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        transition: background 0.2s;
+        margin-bottom: 20px;
+    }
+    button:hover {
+        background: #0050c9;
+    }
+    #results {
+        background: #e8f0fe;
+        padding: 18px;
+        border-radius: 8px;
+        margin-top: 24px;
+        min-height: 40px;
+        max-width: 470px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.09);
+    }
+    hr {
+        margin: 32px auto;
+        max-width: 470px;
+        border: 0;
+        height: 1px;
+        background: #eaeaea;
+    }
+    @media (max-width: 520px) {
+        form, #results, textarea {
+            max-width: 97vw;
+            padding: 16px;
+        }
+        button {
+            width: 100%;
+        }
+    }
+</style>
 </head>
 <body>
 <h2>Upload Resume</h2>
@@ -13,17 +110,14 @@ File: <input type="file" id="file" name="file"><br>
 <button type="submit">Upload</button>
 </form>
 
-
 <hr>
 <h2>Match Job Description</h2>
 <textarea id="job" rows="6" cols="60" placeholder="Paste job description here"></textarea><br>
 Top K: <input id="topk" type="number" value="5" min="1" max="50"><br>
 <button id="matchBtn">Find Matches</button>
 
-
 <h3>Results</h3>
 <div id="results"></div>
-
 
 <script src="app.js"></script>
 </body>
