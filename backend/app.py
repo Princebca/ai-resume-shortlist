@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, send_from_directory
 from sentence_transformers import util
-from your_database_module import SessionLocal, Candidate, json_to_embedding, embedder  # adjust imports as needed
+from db import SessionLocal, Candidate, json_to_embedding, embedder  # adjust imports as needed
 
 app = Flask(__name__)
 
