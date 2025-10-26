@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, send_from_directory
 from sentence_transformers import util
 from db import SessionLocal, Candidate, json_to_embedding, embedder  # adjust imports as needed
+import os
 
 app = Flask(__name__)
 
@@ -11,7 +12,6 @@ def list_candidates():
     out = [{'id': r.id, 'name': r.name, 'email': r.email, 'filename': r.filename} for r in rows]
     session.close()
     return jsonify(out)
-
 
 @app.route('/match', methods=['POST'])
 def match_job():
@@ -32,10 +32,8 @@ def match_job():
         results.append({'id': c.id, 'name': c.name, 'email': c.email, 'score': sim})
 
     results = sorted(results, key=lambda x: x['score'], reverse=True)[:top_k]
-
     session.close()
     return jsonify({'results': results})
-
 
 @app.route('/download/<int:cand_id>', methods=['GET'])
 def download_resume(cand_id):
@@ -48,6 +46,6 @@ def download_resume(cand_id):
 
     return send_from_directory(app.config['UPLOAD_FOLDER'], c.filename, as_attachment=True)
 
-
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000, debug=True)
+    port = int(os.environ.get('PORT', 10000))
+    app.run(host='0.0.0.0', port=port, debug=True)
